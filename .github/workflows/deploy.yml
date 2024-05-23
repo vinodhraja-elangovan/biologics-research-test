@@ -71,18 +71,18 @@ jobs:
         uses: montudor/action-zip@v1
 
 
-- name: Upload to S3
+      - name: Upload to S3
         working-directory: ./layers
         run: |
             aws s3 cp benchling-sdk-python.zip  s3://${{ vars[format('AWS_S3_BUCKET_CODE_{0}', env.WORKSPACE)] }}/${{ vars.AWS_S3_BUCKET_FOLDER }}
             
- - name: Zip sequence-annotation code and upload to S3
+      - name: Zip sequence-annotation code and upload to S3
         working-directory: ./sequence-annotation
         run: |
           zip -qq -r api_auth_${{ github.ref_name }}.zip ./
           aws s3 cp api_auth_${{ github.ref_name }}.zip s3://${{ vars[format('AWS_S3_BUCKET_CODE_{0}', env.WORKSPACE)] }}/${{ vars.AWS_S3_BUCKET_FOLDER }}
 
-- name: Zip sequence-annotation-bulk code and upload to S3
+      - name: Zip sequence-annotation-bulk code and upload to S3
         working-directory: ./sequence-annotation-bulk
         run: |
           zip -qq -r api_auth_${{ github.ref_name }}.zip ./

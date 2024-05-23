@@ -19,7 +19,7 @@ on:
      - 'sequence-annotation/**'
      - 'sequence-annotation-bulk/**'
      - 'layers/**'
-     - './github/workflows/code-deploy.yml'
+     - '/github/workflows/code-deploy.yml'
     
   release:
       types:

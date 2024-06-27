@@ -55,8 +55,8 @@ env:
 ###########################################################################################
 
 jobs:
-  Deploy_Lambda:
-    name: 'Deploy_Lambda'
+  Upload_S3:
+    name: 'Upload_S3'
     runs-on: ubuntu-latest
     environment: ${{ github.ref_name }}
     env:
@@ -82,8 +82,8 @@ jobs:
         uses: montudor/action-zip@v1
 
           
-      - name: Zip sequence-annotation code and upload to S3
-        working-directory: ./sequence-annotation
+      - name: Zip sequence code and upload to S3
+        working-directory: ./sequence
         run: |
-            zip -qq -r sequence_annotation_${{ github.ref_name }}.zip ./
-            aws s3 cp sequence_annotation_${{ github.ref_name }}.zip s3://${{ vars[format('AWS_S3_BUCKET_CODE_{0}', env.WORKSPACE)] }}/${{ vars.AWS_S3_BUCKET_FOLDER }}
+            zip -qq -r sequence_${{ github.ref_name }}.zip ./
+            aws s3 cp sequence_${{ github.ref_name }}.zip s3://${{ vars[format('AWS_S3_BUCKET_CODE_{0}', env.WORKSPACE)] }}/${{ vars.AWS_S3_BUCKET_FOLDER }}

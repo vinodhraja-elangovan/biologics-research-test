@@ -17,7 +17,7 @@ on:
       # - prod
       - dev
     paths:
-     - 'sequence/**'
+     - '/test/sequence/**'
 
      - '.github/workflows/code-deploy.yml'
     

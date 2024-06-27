@@ -11,6 +11,7 @@ name: 'Upload S3'
 on:
   workflow_dispatch:
   push:
+  pull_request:
     branches:
       # - qa
       # - prod
